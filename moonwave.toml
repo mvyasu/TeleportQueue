@@ -10,7 +10,6 @@ classOrder = [
 tagline = "A module that allows developers to quickly setup a teleport queue in Roblox"
 onBrokenMarkdownLinks = "warn"
 onBrokenLinks = "warn"
-favicon = ""
 
 [home]
 enabled = false
