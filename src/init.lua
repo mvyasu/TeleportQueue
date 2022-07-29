@@ -24,6 +24,14 @@ local DEFAULT_QUEUE_OPTIONS = {
 				self:RemoveAll()
 			end
 		end,
+		AllowedWithinQueue = function(self, newAllowedWithinQueueFn)
+			local playersWithinQueueAtStart = table.clone(self:GetPlayers())
+			for _,player in playersWithinQueueAtStart do
+				if not newAllowedWithinQueueFn(self, player) then
+					self:Remove(player)
+				end
+			end
+		end,
 	},
 }
 
