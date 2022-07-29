@@ -47,11 +47,6 @@ return function()
 				it("should allow the options to be changed", function()
 					expect(function()
 						teleportQueue:SetOptions({
-							GetTeleportData = function(self)
-								return {
-									ServerOwner = 1
-								}
-							end,
 							OnOptionUpdated = {
 								PlaceId = function() end,
 							},
@@ -90,18 +85,16 @@ return function()
 					teleportQueue:SetOption("MaxPlayers", 1)
 					expect(#teleportQueue:GetPlayers()).to.equal(0)
 				end)
-				
-				--[[
-				it("should update the TeleportQueued attribute for all players in the queue", function()
-					local player = createPlayer()
-					teleportQueue:Add(player)
-					
-					local newId = game:GetService("HttpService"):GenerateGUID()
-					teleportQueue:SetOption("Id", newId)
-					
-					expect(player:GetAttribute("TeleportQueued")).to.equal(newId)
+
+				it("should remove players from the queue if they no longer pass AllowedWithinQueue", function()
+					local leavePlayerAlone = createPlayer()
+					teleportQueue:Add(leavePlayerAlone)
+					teleportQueue:Add(createPlayer())
+					teleportQueue:SetOption("AllowedWithinQueue", function(self, player)
+						return leavePlayerAlone==player, "Not allowed anymore"
+					end)
+					expect(#teleportQueue:GetPlayers()).to.equal(1)
 				end)
-				]]
 			end)
 		end)
 		
