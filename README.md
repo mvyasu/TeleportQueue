@@ -36,8 +36,9 @@ local function createTagTeleportQueue()
 		end,
 		
 		AllowedWithinQueue = function(self, player)
-			local isWithinSomeQueueAlready = CollectionService:HasTag(player, TELEPORT_QUEUE_TAG) or player:GetAttribute(TELEPORT_QUEUE_ATTRIBUTE)~=nil
-			return not isWithinSomeQueueAlready, "Player is already within a queue"
+			local currentQueueId = player:GetAttribute(TELEPORT_QUEUE_ATTRIBUTE) 
+			local isWithinDifferentQueue = CollectionService:HasTag(player, TELEPORT_QUEUE_TAG) and (currentQueueId~=nil and currentQueueId~=self:GetOption("Id"))
+			return not isWithinDifferentQueue, "Player is already within a different queue"
 		end,
 	})
 end
