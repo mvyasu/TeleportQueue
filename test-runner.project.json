@@ -1,0 +1,24 @@
+{
+	"name": "TeleportQueue Test Runner",
+	"tree": {
+	  "$className": "DataModel",
+  
+	  "ReplicatedStorage": {
+		"$className": "ReplicatedStorage",
+		"TeleportQueue": {
+			"$path": "src"
+		},
+		"TeleportQueueTest": {
+		  "$path": "test"
+		},
+		"TestEZ": {
+			"$path": "test-runner/TestEZ"
+		}
+	  },
+  
+	  "ServerScriptService": {
+		  "$className": "ServerScriptService",
+		  "$path": "test-runner/ServerScriptService"
+	  }
+	}
+}
