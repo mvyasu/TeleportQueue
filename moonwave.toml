@@ -1,0 +1,16 @@
+gitRepoUrl = "https://github.com/mvyasu/TeleportQueue"
+gitSourceBranch = "main"
+
+changelog = true
+classOrder = [
+	"TeleportQueue",
+]
+
+[docusaurus]
+tagline = "A module that allows developers to quickly setup a teleport queue in Roblox"
+onBrokenMarkdownLinks = "warn"
+onBrokenLinks = "warn"
+favicon = ""
+
+[home]
+enabled = false

@@ -25,7 +25,7 @@ local DEFAULT_QUEUE_OPTIONS = {
 			end
 		end,
 		AllowedWithinQueue = function(self, newAllowedWithinQueueFn)
-			local playersWithinQueueAtStart = table.clone(self:GetPlayers())
+			local playersWithinQueueAtStart = self:GetPlayers()
 			for _,player in playersWithinQueueAtStart do
 				if not newAllowedWithinQueueFn(self, player) then
 					self:Remove(player)
@@ -40,7 +40,7 @@ local FlushResult = {
 	QueueDestroyed = "TeleportQueue has been destroyed",
 	QueueEmpty = "TeleportQueue is empty",
 
-	Failure = "Flush failed for an unknown reason",
+	Failure = "Failed flushing for an unknown reason",
 	Success = "Successfully flushed",
 }
 
@@ -80,17 +80,79 @@ export type QueueOptions = {
 	TeleportOptions: TeleportOptions?,
 }
 
-local TeleportQueue = {}
-TeleportQueue.__index = TeleportQueue
+--[=[
+	A string enum value used to describe the result of using `TeleportQueue:Add()`.
+	@interface AddResult
+	@tag enum
+	@within TeleportQueue
+	.QueueDestroyed "TeleportQueue has been destroyed" --TeleportQueue:Destroy() has been called
+	.QueueProcessing "TeleportQueue is processing" --The Queue is in the middle of a :Fush()
+	.QueueFull "TeleportQueue is full" --The MaxPlayers option has been reached
+	.NotAllowed "The player is not allowed within the TeleportQueue" --AllowedWithinQueue doesn't allow the player inside the queue
+	.PlayerBusy "The player is already within the TeleportQueue" --The player is already within TeleportQueue
+	.PlayerLeft "The player has left the game" --The player isn't a child of game.Players
+	.Success = "Successfully added" --Was able to add the player to the TeleportQueue
+]=]
 
-function TeleportQueue.new(teleportQueueOptions: QueueOptions): TeleportQueue
+--[=[
+	A string enum value used to describe the result of using `TeleportQueue:Flush()`.
+	@interface FlushResult
+	@tag enum
+	@within TeleportQueue
+	.QueueDestroyed "TeleportQueue has been destroyed" --TeleportQueue:Destroy() has been called
+	.QueueEmpty = "TeleportQueue is empty" --TeleportQueue:GetPlayers() is empty
+	.Failure = "Failed flushing for an unknown reason" --Something went wrong within the pcall for TeleportAsync
+	.Success = "Successfully added" --Nothing went wrong within the pcall for TeleportAsync and all requirements were met
+]=]
+
+--[=[
+	@prop FlushResult FlushResult
+	@within TeleportQueue
+	@readonly
+	@tag enums
+	A table containing all members of the `FlushResult` string enum.
+]=]
+
+--[=[
+	@prop AddResult AddResult
+	@within TeleportQueue
+	@readonly
+	@tag enums
+	A table containing all members of the `AddResult` string enum.
+]=]
+
+--[=[
+	A TeleportQueue is an object that handles a list of a players that can be teleported to a specified
+	PlaceId with specific TeleportOptions with ease.
+	@class TeleportQueue
+	@__index prototype
+]=]
+
+local TeleportQueue = {
+	FlushResult = table.freeze(FlushResult),
+	AddResult = table.freeze(AddResult),
+}
+
+TeleportQueue.prototype = {}
+TeleportQueue.__index = TeleportQueue.prototype
+
+--[=[
+	@param startOptions QueueOptions?
+	@return TeleportQueue
+	Constructs a TeleportQueue object
+	:::caution
+	You don't need to give any QueueOptions when creating a new TeleportQueue, but
+	you should be wary of the fact that not setting an Id or PlaceId can cause unwanted results!
+]=]
+
+function TeleportQueue.new(startOptions: QueueOptions): TeleportQueue
 	local self = setmetatable({}, TeleportQueue)
 	self[PROCESS_SYMBOL] = false
 	self[CLOSING_SYMBOL] = false
 	self[PLAYERS_SYMBOL] = {}
 	self[OPTIONS_SYMBOL] = {}
 
-	self:SetOptions(teleportQueueOptions, true)
+	self:SetOptions(startOptions, true)
 
 	self[CLEANUP_SYMBOL] = {
 		game:GetService("Players").PlayerRemoving:Connect(function(player)
@@ -104,11 +166,24 @@ function TeleportQueue.new(teleportQueueOptions: QueueOptions): TeleportQueue
 	return self
 end
 
-function TeleportQueue:GetPlayers()
-	return self[PLAYERS_SYMBOL]
+--[=[
+	@return {Player}
+	Returns an array of players that are in the queue
+]=]
+
+function TeleportQueue.prototype:GetPlayers()
+	return table.clone(self[PLAYERS_SYMBOL])
 end
 
-function TeleportQueue:SetOption(optionName: string, newValue: any): boolean
+--[=[
+	@param optionName string
+	@param newvalue any
+	@return boolean --whether it successfully set the option
+	Sets an option to a new value. If there's a function in OnOptionUpdated
+	for the option that is changing, it will run that function as well.
+]=]
+
+function TeleportQueue.prototype:SetOption(optionName: string, newValue: any): boolean
 	if self[CLOSING_SYMBOL] then
 		return false
 	end
@@ -124,15 +199,32 @@ function TeleportQueue:SetOption(optionName: string, newValue: any): boolean
 	return true
 end
 
-function TeleportQueue:GetOption(optionName: string): any?
+--[=[
+	@param optionName string
+	@return any? --The value of the option
+]=]
+
+function TeleportQueue.prototype:GetOption(optionName: string): any?
 	return self[OPTIONS_SYMBOL][optionName]
 end
 
-function TeleportQueue:GetOptions(): QueueOptions
-	return self[OPTIONS_SYMBOL]
+--[=[
+	@return QueueOptions --the current QueueOptions that has been shallow copied with table.clone()
+]=]
+
+function TeleportQueue.prototype:GetOptions(): QueueOptions
+	return table.clone(self[OPTIONS_SYMBOL])
 end
 
-function TeleportQueue:SetOptions(newTeleportQueueOptions: QueueOptions, shouldReconcile: boolean): nil
+--[=[
+	@param newTeleportQueueOptions QueueOptions
+	@param shouldReconcile boolean? --if set to true, then the passed option dictionary will be reconciled with the defaults
+	@return QueueOptions --the current QueueOptions that has been shallow copied with table.clone()
+	This can be used to set multiple options at once instead of only one at a time with `:SetOption()`.
+	You shouldn't ever need to use the shouldReconcile parameter since it's only used when the TeleportQueue is constructed.
+]=]
+
+function TeleportQueue.prototype:SetOptions(newTeleportQueueOptions: QueueOptions, shouldReconcile: boolean?): nil
 	if self[CLOSING_SYMBOL] then
 		return nil
 	end
@@ -159,7 +251,14 @@ function TeleportQueue:SetOptions(newTeleportQueueOptions: QueueOptions, shouldR
 	return nil
 end
 
-function TeleportQueue:Remove(player: Player): boolean
+--[=[
+	@param player Player
+	@return boolean --whether it had to remove the player from the queue or not
+	Removes the provided player from the queue if they are within the queue.
+	If they are not within the queue, it'll do nothing.
+]=]
+
+function TeleportQueue.prototype:Remove(player: Player): boolean
 	local playerIndex = table.find(self[PLAYERS_SYMBOL] or {}, player)
 	if playerIndex then
 		table.remove(self[PLAYERS_SYMBOL], playerIndex)
@@ -174,7 +273,12 @@ function TeleportQueue:Remove(player: Player): boolean
 	return false
 end
 
-function TeleportQueue:RemoveAll(): {[Player]: boolean}
+--[=[
+	@return {[Player]: boolean} --a lookup dictionary for whether it had to remove the player from the queue or not
+	Removes all the players from the queue in a while loop.
+]=]
+
+function TeleportQueue.prototype:RemoveAll(): {[Player]: boolean}
 	local removalResults = {}
 	while #self[PLAYERS_SYMBOL]>0 do
 		local index, player = next(self[PLAYERS_SYMBOL])
@@ -189,7 +293,13 @@ function TeleportQueue:RemoveAll(): {[Player]: boolean}
 	return removalResults
 end
 
-function TeleportQueue:Add(player: Player): (AddResult, string?)
+--[=[
+	@return (AddResult, string?) --what happened when trying to add the player
+	If the AddResult returned is `AddResult.NotAllowed`, then it will return a second value
+	and that second value is the reasoning from the AllowedWithinQueue option function
+]=]
+
+function TeleportQueue.prototype:Add(player: Player): (AddResult, string?)
 	do
 		if self[CLOSING_SYMBOL] then
 			return AddResult.QueueDestroyed
@@ -231,7 +341,13 @@ function TeleportQueue:Add(player: Player): (AddResult, string?)
 	return AddResult.Success
 end
 
-function TeleportQueue:Flush(): (FlushResult, (TeleportAsyncResult | string)?)
+--[=[
+	@return (FlushResult, (TeleportAsyncResult | string)?) --what happened when trying to flush the TeleportQueue
+	If FlushResult is `FlushResult.Success` or `FlushResult.Failure`, it will return a second value. If it was a success,
+	then that second value is a `TeleportAsyncResult`. If it was not, then it's a `string` describing what went wrong.
+]=]
+
+function TeleportQueue.prototype:Flush(): (FlushResult, (TeleportAsyncResult | string)?)
 	local playersWithinQueue = self:GetPlayers()
 	do --ensures flush can be done at the moment
 		if self[CLOSING_SYMBOL] then
@@ -269,7 +385,16 @@ function TeleportQueue:Flush(): (FlushResult, (TeleportAsyncResult | string)?)
 	return if wasSuccessful then FlushResult.Success else FlushResult.Failure, teleportResult
 end
 
-function TeleportQueue:Destroy()
+--[=[
+	@yields
+	Cleans up any connections that TeleportQueue and locks `:Add()`, `:Flush()`, `:SetOption()`, `:SetOptions()`.
+	It will yield until `:Flush()` is done processing. If it has been yielding for over FORCE_REMOVE_ALL_AFTER, then
+	it will automatically stop yielding. 
+	
+	Once it is done yielding, it runs `:RemoveAll()`. It doesn't not yield at all if `:Flush()` is not being processed.
+]=]
+
+function TeleportQueue.prototype:Destroy()
 	self[CLOSING_SYMBOL] = true
 
 	for _,object in self[CLEANUP_SYMBOL] do
@@ -294,9 +419,4 @@ function TeleportQueue:Destroy()
 	end
 end
 
-return {
-	new = TeleportQueue.new,
-
-	FlushResult = FlushResult,
-	AddResult = AddResult,
-}
+return TeleportQueue
