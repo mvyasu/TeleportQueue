@@ -1,15 +1,16 @@
+title = "TeleportQueue"
 gitRepoUrl = "https://github.com/mvyasu/TeleportQueue"
-gitSourceBranch = "main"
 
+gitSourceBranch = "main"
 changelog = true
-classOrder = [
-	"TeleportQueue"
-]
+classOrder = ["TeleportQueue"]
 
 [docusaurus]
-tagline = "A module that allows developers to quickly setup a teleport queue in Roblox"
-onBrokenMarkdownLinks = "warn"
 onBrokenLinks = "warn"
+onBrokenMarkdownLinks = "warn"
 
-[home]
-enabled = false
+organizationName = "mvyasu"
+projectName = "TeleportQueue"
+url = "https://mvyasu.github.io"
+baseUrl = "/TeleportQueue"
+tagline = "A module that allows developers to quickly setup a teleport queue in Roblox"
