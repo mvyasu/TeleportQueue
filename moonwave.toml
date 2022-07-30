@@ -3,7 +3,7 @@ gitSourceBranch = "main"
 
 changelog = true
 classOrder = [
-	"TeleportQueue",
+	"TeleportQueue"
 ]
 
 [docusaurus]

@@ -124,6 +124,7 @@ export type QueueOptions = {
 --[=[
 	A TeleportQueue is an object that handles a list of a players that can be teleported to a specified
 	PlaceId with specific TeleportOptions with ease.
+	
 	@class TeleportQueue
 	@__index prototype
 ]=]
