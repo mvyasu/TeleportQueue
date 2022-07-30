@@ -81,7 +81,6 @@ export type QueueOptions = {
 }
 
 --[=[
-	A string enum value used to describe the result of using `TeleportQueue:Add()`.
 	@interface AddResult
 	@tag enum
 	@within TeleportQueue
@@ -92,10 +91,11 @@ export type QueueOptions = {
 	.PlayerBusy "The player is already within the TeleportQueue" --The player is already within TeleportQueue
 	.PlayerLeft "The player has left the game" --The player isn't a child of game.Players
 	.Success = "Successfully added" --Was able to add the player to the TeleportQueue
+
+	A string enum value used to describe the result of using `TeleportQueue:Add()`.
 ]=]
 
 --[=[
-	A string enum value used to describe the result of using `TeleportQueue:Flush()`.
 	@interface FlushResult
 	@tag enum
 	@within TeleportQueue
@@ -103,6 +103,8 @@ export type QueueOptions = {
 	.QueueEmpty = "TeleportQueue is empty" --TeleportQueue:GetPlayers() is empty
 	.Failure = "Failed flushing for an unknown reason" --Something went wrong within the pcall for TeleportAsync
 	.Success = "Successfully added" --Nothing went wrong within the pcall for TeleportAsync and all requirements were met
+	
+	A string enum value used to describe the result of using `TeleportQueue:Flush()`.
 ]=]
 
 --[=[
@@ -122,11 +124,11 @@ export type QueueOptions = {
 ]=]
 
 --[=[
-	A TeleportQueue is an object that handles a list of a players that can be teleported to a specified
-	PlaceId with specific TeleportOptions with ease.
-	
 	@class TeleportQueue
 	@__index prototype
+
+	A TeleportQueue is an object that handles a list of a players that can be teleported to a specified
+	PlaceId with specific TeleportOptions with ease.
 ]=]
 
 local TeleportQueue = {
@@ -140,7 +142,9 @@ TeleportQueue.__index = TeleportQueue.prototype
 --[=[
 	@param startOptions QueueOptions?
 	@return TeleportQueue
+	
 	Constructs a TeleportQueue object
+	
 	:::caution
 	You don't need to give any QueueOptions when creating a new TeleportQueue, but
 	you should be wary of the fact that not setting an Id or PlaceId can cause unwanted results!
@@ -169,6 +173,7 @@ end
 
 --[=[
 	@return {Player}
+
 	Returns an array of players that are in the queue
 ]=]
 
@@ -180,6 +185,7 @@ end
 	@param optionName string
 	@param newvalue any
 	@return boolean --whether it successfully set the option
+
 	Sets an option to a new value. If there's a function in OnOptionUpdated
 	for the option that is changing, it will run that function as well.
 ]=]
@@ -221,6 +227,7 @@ end
 	@param newTeleportQueueOptions QueueOptions
 	@param shouldReconcile boolean? --if set to true, then the passed option dictionary will be reconciled with the defaults
 	@return QueueOptions --the current QueueOptions that has been shallow copied with table.clone()
+	
 	This can be used to set multiple options at once instead of only one at a time with `:SetOption()`.
 	You shouldn't ever need to use the shouldReconcile parameter since it's only used when the TeleportQueue is constructed.
 ]=]
@@ -255,6 +262,7 @@ end
 --[=[
 	@param player Player
 	@return boolean --whether it had to remove the player from the queue or not
+	
 	Removes the provided player from the queue if they are within the queue.
 	If they are not within the queue, it'll do nothing.
 ]=]
@@ -276,6 +284,7 @@ end
 
 --[=[
 	@return {[Player]: boolean} --a lookup dictionary for whether it had to remove the player from the queue or not
+	
 	Removes all the players from the queue in a while loop.
 ]=]
 
@@ -296,6 +305,7 @@ end
 
 --[=[
 	@return (AddResult, string?) --what happened when trying to add the player
+	
 	If the AddResult returned is `AddResult.NotAllowed`, then it will return a second value
 	and that second value is the reasoning from the AllowedWithinQueue option function
 ]=]
@@ -344,6 +354,7 @@ end
 
 --[=[
 	@return (FlushResult, (TeleportAsyncResult | string)?) --what happened when trying to flush the TeleportQueue
+	
 	If FlushResult is `FlushResult.Success` or `FlushResult.Failure`, it will return a second value. If it was a success,
 	then that second value is a `TeleportAsyncResult`. If it was not, then it's a `string` describing what went wrong.
 ]=]
@@ -388,6 +399,7 @@ end
 
 --[=[
 	@yields
+	
 	Cleans up any connections that TeleportQueue and locks `:Add()`, `:Flush()`, `:SetOption()`, `:SetOptions()`.
 	It will yield until `:Flush()` is done processing. If it has been yielding for over FORCE_REMOVE_ALL_AFTER, then
 	it will automatically stop yielding. 

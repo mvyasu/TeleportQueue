@@ -3,7 +3,7 @@ gitRepoUrl = "https://github.com/mvyasu/TeleportQueue"
 
 gitSourceBranch = "main"
 changelog = true
-classOrder = ["TeleportQueue"]
+classOrder = []
 
 [docusaurus]
 onBrokenLinks = "warn"
