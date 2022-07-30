@@ -6,6 +6,7 @@ changelog = true
 classOrder = []
 
 [docusaurus]
+favicon = "/favicon.ico"
 onBrokenLinks = "warn"
 onBrokenMarkdownLinks = "warn"
 

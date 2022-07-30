@@ -68,6 +68,20 @@ export type TeleportQueue = {
 	Flush: () -> (boolean, string?),
 }
 
+--[=[
+	@interface QueueOptions
+	.PlaceId number
+	.Id string|number
+	.MaxPlayers number?
+	.TeleportOptions TeleportOptions?
+
+	.AllowedWithinQueue ((TeleportQueue, Player) -> (boolean, string?))?
+	.OnPlayerRemoved ((TeleportQueue, Player) -> nil)?
+	.OnPlayerAdded ((TeleportQueue, Player) -> nil)?
+	.OnOptionUpdated {(TeleportQueue, any) -> nil}?
+	@within TeleportQueue
+]=]
+
 export type QueueOptions = {
 	AllowedWithinQueue: ((TeleportQueue, Player) -> (boolean, string?))?,
 	OnPlayerRemoved: ((TeleportQueue, Player) -> nil)?,
