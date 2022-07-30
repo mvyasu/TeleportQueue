@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[195],{3891:e=>{e.exports=JSON.parse('{"sourceUrl":"https://github.com/mvyasu/TeleportQueue/blob/main","baseUrl":"/TeleportQueue/","classOrder":[],"apiCategories":[]}')}}]);
