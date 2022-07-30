@@ -100,7 +100,7 @@ export type QueueOptions = {
 	@within TeleportQueue
 	.QueueDestroyed string -- The TeleportQueue has been destroyed
 	.QueueProcessing string -- The TeleportQueue is flushing
-	.QueueFull string -- The TeleportQueue reached MaxPlayers
+	.QueueFull string -- The TeleportQueue is at MaxPlayers
 	.NotAllowed string -- The AllowedWithinQueue option rejected the player
 	.PlayerBusy string -- The player is already within TeleportQueue
 	.PlayerLeft string -- The player isn't a child of game.Players
@@ -115,7 +115,7 @@ export type QueueOptions = {
 	@within TeleportQueue
 	.QueueDestroyed string -- The TeleportQueue has been destroyed
 	.QueueEmpty string -- The TeleportQueue contains no players
-	.Failure string -- The TeleportQueue when trying to call TeleportAsync
+	.Failure string -- The TeleportQueue failed when trying to call TeleportAsync
 	.Success string -- The TeleportQueue was able to flush
 	
 	A string enum value used to describe the result of using `TeleportQueue:Flush()`.
