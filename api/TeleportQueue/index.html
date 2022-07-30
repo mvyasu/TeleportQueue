@@ -6,9 +6,9 @@
 <meta name="generator" content="Docusaurus v2.0.0-beta.21">
 <title data-rh="true">TeleportQueue | TeleportQueue</title><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://mvyasu.github.io/TeleportQueue/api/TeleportQueue"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="TeleportQueue | TeleportQueue"><meta data-rh="true" name="description" content="A TeleportQueue is an object that handles a list of a players that can be teleported to a specified
 PlaceId with specific TeleportOptions with ease."><meta data-rh="true" property="og:description" content="A TeleportQueue is an object that handles a list of a players that can be teleported to a specified
-PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="canonical" href="https://mvyasu.github.io/TeleportQueue/api/TeleportQueue"><link data-rh="true" rel="alternate" href="https://mvyasu.github.io/TeleportQueue/api/TeleportQueue" hreflang="en"><link data-rh="true" rel="alternate" href="https://mvyasu.github.io/TeleportQueue/api/TeleportQueue" hreflang="x-default"><link rel="stylesheet" href="/TeleportQueue/assets/css/styles.bc734c04.css">
-<link rel="preload" href="/TeleportQueue/assets/js/runtime~main.208174d3.js" as="script">
-<link rel="preload" href="/TeleportQueue/assets/js/main.f63cba22.js" as="script">
+PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="icon" href="/TeleportQueue/favicon.ico"><link data-rh="true" rel="canonical" href="https://mvyasu.github.io/TeleportQueue/api/TeleportQueue"><link data-rh="true" rel="alternate" href="https://mvyasu.github.io/TeleportQueue/api/TeleportQueue" hreflang="en"><link data-rh="true" rel="alternate" href="https://mvyasu.github.io/TeleportQueue/api/TeleportQueue" hreflang="x-default"><link rel="stylesheet" href="/TeleportQueue/assets/css/styles.bc734c04.css">
+<link rel="preload" href="/TeleportQueue/assets/js/runtime~main.a0820170.js" as="script">
+<link rel="preload" href="/TeleportQueue/assets/js/main.46a1d8cf.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -17,7 +17,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
   A TeleportQueue is an object that handles a list of a players that can be teleported to a specified
   PlaceId with specific TeleportOptions with ease.
 </p>
-</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a class="hash-link" href="#types" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="AddResult"><code style="text-decoration:none">AddResult</code><a class="hash-link" href="#AddResult" title="Direct link to heading">​</a></h3><span class="docTag__6UZ" style="border-color:#218c74;color:#218c74">enum</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L97"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>AddResult<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>QueueDestroyed<!-- -->: </code><code class="blue_P4bS">string</code><span class="inlineDescription_G7Er">-- <span>
+</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a class="hash-link" href="#types" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="QueueOptions"><code style="text-decoration:none">QueueOptions</code><a class="hash-link" href="#QueueOptions" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L84"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>QueueOptions<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>PlaceId<!-- -->: </code><code class="blue_P4bS">number</code></div><div><code>Id<!-- -->: </code><code class="blue_P4bS">string</code><code class="op_lSLc"> | </code><code class="blue_P4bS">number</code></div><div><code>MaxPlayers<!-- -->: </code><code class="blue_P4bS">number?</code></div><div><code>TeleportOptions<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/TeleportOptions" target="_blank" rel="noopener noreferrer">TeleportOptions?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div><div><code>AllowedWithinQueue<!-- -->: </code><code class="purple_ieR2">(</code><code class="green_DgR4">(</code><div class="inset_uKQm"><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue">TeleportQueue</a></code><code class="green_DgR4">,</code></div><div class="inset_uKQm"><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div><code class="green_DgR4">)</code><code class="green_DgR4"> → </code><code class="green_DgR4">(</code><div class="inset_uKQm"><code class="blue_P4bS">boolean</code><code class="green_DgR4">,</code></div><div class="inset_uKQm"><code class="blue_P4bS">string?</code></div><code class="green_DgR4">)</code><code class="purple_ieR2">)</code><code class="blue_P4bS">?</code></div><div><code>OnPlayerRemoved<!-- -->: </code><code class="purple_ieR2">(</code><code class="green_DgR4">(</code><div class="inset_uKQm"><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue">TeleportQueue</a></code><code class="green_DgR4">,</code></div><div class="inset_uKQm"><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div><code class="green_DgR4">)</code><code class="green_DgR4"> → </code><code class="blue_P4bS">nil</code><code class="purple_ieR2">)</code><code class="blue_P4bS">?</code></div><div><code>OnPlayerAdded<!-- -->: </code><code class="purple_ieR2">(</code><code class="green_DgR4">(</code><div class="inset_uKQm"><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue">TeleportQueue</a></code><code class="green_DgR4">,</code></div><div class="inset_uKQm"><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div><code class="green_DgR4">)</code><code class="green_DgR4"> → </code><code class="blue_P4bS">nil</code><code class="purple_ieR2">)</code><code class="blue_P4bS">?</code></div><div><code>OnOptionUpdated<!-- -->: </code><code class="purple_ieR2">{</code><code class="green_DgR4">(</code><div class="inset_uKQm"><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue">TeleportQueue</a></code><code class="green_DgR4">,</code></div><div class="inset_uKQm"><code class="blue_P4bS">any</code></div><code class="green_DgR4">)</code><code class="green_DgR4"> → </code><code class="blue_P4bS">nil</code><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code></div></div><code>}</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="AddResult"><code style="text-decoration:none">AddResult</code><a class="hash-link" href="#AddResult" title="Direct link to heading">​</a></h3><span class="docTag__6UZ" style="border-color:#218c74;color:#218c74">enum</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L111"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>AddResult<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>QueueDestroyed<!-- -->: </code><code class="blue_P4bS">string</code><span class="inlineDescription_G7Er">-- <span>
 <p>The TeleportQueue has been destroyed</p>
 </span></span></div><div><code>QueueProcessing<!-- -->: </code><code class="blue_P4bS">string</code><span class="inlineDescription_G7Er">-- <span>
 <p>The TeleportQueue is flushing</p>
@@ -33,7 +33,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
 <p>The TeleportQueue added the player</p>
 </span></span></div></div><code>}</code></div><div>
 <p>A string enum value used to describe the result of using <code>TeleportQueue:Add()</code>.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="FlushResult"><code style="text-decoration:none">FlushResult</code><a class="hash-link" href="#FlushResult" title="Direct link to heading">​</a></h3><span class="docTag__6UZ" style="border-color:#218c74;color:#218c74">enum</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L109"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>FlushResult<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>QueueDestroyed<!-- -->: </code><code class="blue_P4bS">string</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="FlushResult"><code style="text-decoration:none">FlushResult</code><a class="hash-link" href="#FlushResult" title="Direct link to heading">​</a></h3><span class="docTag__6UZ" style="border-color:#218c74;color:#218c74">enum</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L123"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>FlushResult<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>QueueDestroyed<!-- -->: </code><code class="blue_P4bS">string</code><span class="inlineDescription_G7Er">-- <span>
 <p>The TeleportQueue has been destroyed</p>
 </span></span></div><div><code>QueueEmpty<!-- -->: </code><code class="blue_P4bS">string</code><span class="inlineDescription_G7Er">-- <span>
 <p>The TeleportQueue contains no players</p>
@@ -43,11 +43,11 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
 <p>The TeleportQueue was able to flush</p>
 </span></span></div></div><code>}</code></div><div>
 <p>A string enum value used to describe the result of using <code>TeleportQueue:Flush()</code>.</p>
-</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a class="hash-link" href="#properties" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="FlushResult"><code style="text-decoration:none">FlushResult</code><a class="hash-link" href="#FlushResult" title="Direct link to heading">​</a></h3><span class="badge_Ba2I" style="color:#e74c3c"><span class="badgeTooltip_cWXP">This item is read only and cannot be modified.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" fill="#e74c3c" x="0px" y="0px" viewBox="0 0 96 96"><path d="M70.354,15.662h-7.496H25.566c-3.282,0-5.19-0.776-5.728-1.169v-1.456c0.538-0.393,2.445-1.168,5.728-1.168h46.479V8H25.566  c-4.776,0-9.594,1.468-9.594,4.747v61.458C15.972,86.645,20.328,88,37.495,88h42.535V15.662H70.354z"></path></svg> <!-- -->Read Only</span></span><span class="docTag__6UZ" style="border-color:#2b8ab6;color:#2b8ab6">enums</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L117"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->.<!-- -->FlushResult<!-- -->:<!-- --> </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue#FlushResult">FlushResult</a></code></div><div>
+</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a class="hash-link" href="#properties" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="FlushResult"><code style="text-decoration:none">FlushResult</code><a class="hash-link" href="#FlushResult" title="Direct link to heading">​</a></h3><span class="badge_Ba2I" style="color:#e74c3c"><span class="badgeTooltip_cWXP">This item is read only and cannot be modified.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" fill="#e74c3c" x="0px" y="0px" viewBox="0 0 96 96"><path d="M70.354,15.662h-7.496H25.566c-3.282,0-5.19-0.776-5.728-1.169v-1.456c0.538-0.393,2.445-1.168,5.728-1.168h46.479V8H25.566  c-4.776,0-9.594,1.468-9.594,4.747v61.458C15.972,86.645,20.328,88,37.495,88h42.535V15.662H70.354z"></path></svg> <!-- -->Read Only</span></span><span class="docTag__6UZ" style="border-color:#2b8ab6;color:#2b8ab6">enums</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L131"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->.<!-- -->FlushResult<!-- -->:<!-- --> </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue#FlushResult">FlushResult</a></code></div><div>
 <p>A table containing all members of the <code>FlushResult</code> string enum.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="AddResult"><code style="text-decoration:none">AddResult</code><a class="hash-link" href="#AddResult" title="Direct link to heading">​</a></h3><span class="badge_Ba2I" style="color:#e74c3c"><span class="badgeTooltip_cWXP">This item is read only and cannot be modified.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" fill="#e74c3c" x="0px" y="0px" viewBox="0 0 96 96"><path d="M70.354,15.662h-7.496H25.566c-3.282,0-5.19-0.776-5.728-1.169v-1.456c0.538-0.393,2.445-1.168,5.728-1.168h46.479V8H25.566  c-4.776,0-9.594,1.468-9.594,4.747v61.458C15.972,86.645,20.328,88,37.495,88h42.535V15.662H70.354z"></path></svg> <!-- -->Read Only</span></span><span class="docTag__6UZ" style="border-color:#2b8ab6;color:#2b8ab6">enums</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L125"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->.<!-- -->AddResult<!-- -->:<!-- --> </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue#AddResult">AddResult</a></code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="AddResult"><code style="text-decoration:none">AddResult</code><a class="hash-link" href="#AddResult" title="Direct link to heading">​</a></h3><span class="badge_Ba2I" style="color:#e74c3c"><span class="badgeTooltip_cWXP">This item is read only and cannot be modified.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" fill="#e74c3c" x="0px" y="0px" viewBox="0 0 96 96"><path d="M70.354,15.662h-7.496H25.566c-3.282,0-5.19-0.776-5.728-1.169v-1.456c0.538-0.393,2.445-1.168,5.728-1.168h46.479V8H25.566  c-4.776,0-9.594,1.468-9.594,4.747v61.458C15.972,86.645,20.328,88,37.495,88h42.535V15.662H70.354z"></path></svg> <!-- -->Read Only</span></span><span class="docTag__6UZ" style="border-color:#2b8ab6;color:#2b8ab6">enums</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L139"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->.<!-- -->AddResult<!-- -->:<!-- --> </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue#AddResult">AddResult</a></code></div><div>
 <p>A table containing all members of the <code>AddResult</code> string enum.</p>
-</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="new"><code style="text-decoration:none">new</code><a class="hash-link" href="#new" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L152"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->.</code><code class="green_DgR4">new</code><code>(</code><code>startOptions<!-- -->: </code><code class="blue_P4bS">QueueOptions?</code><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue">TeleportQueue</a></code></div><div>
+</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="new"><code style="text-decoration:none">new</code><a class="hash-link" href="#new" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L166"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->.</code><code class="green_DgR4">new</code><code>(</code><code>startOptions<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue#QueueOptions">QueueOptions?</a></code><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue">TeleportQueue</a></code></div><div>
 <p>Constructs a TeleportQueue object</p>
 <div class="admonition admonition-caution alert alert--warning">
   <div class="admonition-heading">
@@ -62,48 +62,48 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
     </p>
   </div>
 </div>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetPlayers"><code style="text-decoration:none">GetPlayers</code><a class="hash-link" href="#GetPlayers" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L179"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">GetPlayers</code><code>(</code><code>) → </code><code class="purple_ieR2">{</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="purple_ieR2">}</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetPlayers"><code style="text-decoration:none">GetPlayers</code><a class="hash-link" href="#GetPlayers" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L193"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">GetPlayers</code><code>(</code><code>) → </code><code class="purple_ieR2">{</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="purple_ieR2">}</code></div><div>
 <p>Returns an array of players that are in the queue</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="SetOption"><code style="text-decoration:none">SetOption</code><a class="hash-link" href="#SetOption" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L192"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">SetOption</code><code>(</code><div class="inset_uKQm"><div><code>optionName<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code></div><div><code>newValue<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code class="blue_P4bS">boolean</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="SetOption"><code style="text-decoration:none">SetOption</code><a class="hash-link" href="#SetOption" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L206"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">SetOption</code><code>(</code><div class="inset_uKQm"><div><code>optionName<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code></div><div><code>newValue<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code class="blue_P4bS">boolean</code><span class="inlineDescription_G7Er">-- <span>
 <p>whether it successfully set the option</p>
 </span></span></div><div>
 <p>
   Sets an option to a new value. If there's a function in OnOptionUpdated
   for the option that is changing, it will run that function as well.
 </p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetOption"><code style="text-decoration:none">GetOption</code><a class="hash-link" href="#GetOption" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L213"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">GetOption</code><code>(</code><code>optionName<!-- -->: </code><code class="blue_P4bS">string</code><code>) → </code><code class="blue_P4bS">any?</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetOption"><code style="text-decoration:none">GetOption</code><a class="hash-link" href="#GetOption" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L227"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">GetOption</code><code>(</code><code>optionName<!-- -->: </code><code class="blue_P4bS">string</code><code>) → </code><code class="blue_P4bS">any?</code><span class="inlineDescription_G7Er">-- <span>
 <p>The value of the option</p>
-</span></span></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetOptions"><code style="text-decoration:none">GetOptions</code><a class="hash-link" href="#GetOptions" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L221"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">GetOptions</code><code>(</code><code>) → </code><code class="blue_P4bS">QueueOptions</code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="SetOptions"><code style="text-decoration:none">SetOptions</code><a class="hash-link" href="#SetOptions" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L233"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">SetOptions</code><code>(</code><div class="inset_uKQm"><div><code>newTeleportQueueOptions<!-- -->: </code><code class="blue_P4bS">QueueOptions</code><code>,</code></div><div><code>shouldReconcile<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
+</span></span></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetOptions"><code style="text-decoration:none">GetOptions</code><a class="hash-link" href="#GetOptions" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L235"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">GetOptions</code><code>(</code><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue#QueueOptions">QueueOptions</a></code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="SetOptions"><code style="text-decoration:none">SetOptions</code><a class="hash-link" href="#SetOptions" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L247"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">SetOptions</code><code>(</code><div class="inset_uKQm"><div><code>newTeleportQueueOptions<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue#QueueOptions">QueueOptions</a></code><code>,</code></div><div><code>shouldReconcile<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
 <p>decides if reconciled with the defaults</p>
 </span></span></div></div><code>) → </code><code class="blue_P4bS">nil</code></div><div>
 <p>
   This can be used to set multiple options at once instead of only one at a time with <code>:SetOption()</code>.
   You shouldn't ever need to use the shouldReconcile parameter since it's only used when the TeleportQueue is constructed.
 </p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Remove"><code style="text-decoration:none">Remove</code><a class="hash-link" href="#Remove" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L268"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">Remove</code><code>(</code><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>) → </code><code class="blue_P4bS">boolean</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Remove"><code style="text-decoration:none">Remove</code><a class="hash-link" href="#Remove" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L282"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">Remove</code><code>(</code><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>) → </code><code class="blue_P4bS">boolean</code><span class="inlineDescription_G7Er">-- <span>
 <p>true if the player was removed</p>
 </span></span></div><div>
 <p>
   Removes the provided player from the queue if they are within the queue.
   If they are not within the queue, it'll do nothing.
 </p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="RemoveAll"><code style="text-decoration:none">RemoveAll</code><a class="hash-link" href="#RemoveAll" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L289"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">RemoveAll</code><code>(</code><code>) → </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>]</code></span><code>: </code><code class="blue_P4bS">boolean</code><code class="purple_ieR2">}</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="RemoveAll"><code style="text-decoration:none">RemoveAll</code><a class="hash-link" href="#RemoveAll" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L303"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">RemoveAll</code><code>(</code><code>) → </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>]</code></span><code>: </code><code class="blue_P4bS">boolean</code><code class="purple_ieR2">}</code></div><div>
 <p>Removes all the players from the queue in a while loop.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Add"><code style="text-decoration:none">Add</code><a class="hash-link" href="#Add" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L311"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">Add</code><code>(</code><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>) → </code><code class="purple_ieR2">(</code><div class="inset_uKQm"><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue#AddResult">AddResult</a></code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code class="blue_P4bS">string?</code></div><code class="purple_ieR2">)</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Add"><code style="text-decoration:none">Add</code><a class="hash-link" href="#Add" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L325"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">Add</code><code>(</code><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>) → </code><code class="purple_ieR2">(</code><div class="inset_uKQm"><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue#AddResult">AddResult</a></code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code class="blue_P4bS">string?</code></div><code class="purple_ieR2">)</code><span class="inlineDescription_G7Er">-- <span>
 <p>what happened when trying to add the player</p>
 </span></span></div><div>
 <p>
   If the AddResult returned is <code>AddResult.NotAllowed</code>, then it will return a second value
   and that second value is the reasoning from the AllowedWithinQueue option function
 </p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Flush"><code style="text-decoration:none">Flush</code><a class="hash-link" href="#Flush" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L360"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">Flush</code><code>(</code><code>) → </code><code class="purple_ieR2">(</code><div class="inset_uKQm"><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue#FlushResult">FlushResult</a></code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code class="green_DgR4">(</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/TeleportAsyncResult" target="_blank" rel="noopener noreferrer">TeleportAsyncResult<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc"> | </code><code class="blue_P4bS">string</code><code class="green_DgR4">)</code><code class="blue_P4bS">?</code></div><code class="purple_ieR2">)</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Flush"><code style="text-decoration:none">Flush</code><a class="hash-link" href="#Flush" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L374"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">Flush</code><code>(</code><code>) → </code><code class="purple_ieR2">(</code><div class="inset_uKQm"><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/TeleportQueue/api/TeleportQueue#FlushResult">FlushResult</a></code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code class="green_DgR4">(</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/TeleportAsyncResult" target="_blank" rel="noopener noreferrer">TeleportAsyncResult<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_lSLc"> | </code><code class="blue_P4bS">string</code><code class="green_DgR4">)</code><code class="blue_P4bS">?</code></div><code class="purple_ieR2">)</code><span class="inlineDescription_G7Er">-- <span>
 <p>what happened when trying to flush the TeleportQueue</p>
 </span></span></div><div>
 <p>
   If FlushResult is <code>FlushResult.Success</code> or <code>FlushResult.Failure</code>, it will return a second value. If it was a success,
   then that second value is a <code>TeleportAsyncResult</code>. If it was not, then it's a <code>string</code> describing what went wrong.
 </p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Destroy"><code style="text-decoration:none">Destroy</code><a class="hash-link" href="#Destroy" title="Direct link to heading">​</a></h3><span class="badge_Ba2I" style="color:#f1c40f"><span class="badgeTooltip_cWXP">This is a yielding function. When called, it will pause the Lua thread that called the function until a result is ready to be returned, without interrupting other scripts.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#f1c40f" role="img" aria-label="This is a yielding function. When called, it will pause the Lua thread that called the function until a result is ready to be returned, without interrupting other scripts."><path d="M96.4 11.9c-1.4-2.5-4-4-6.9-4H10.8c-2.9 0-5.4 1.5-6.9 4-1.4 2.5-1.4 5.5 0 7.9L43.3 88c1.4 2.5 4 4 6.9 4 2.9 0 5.4-1.5 6.9-4l39.3-68.2c1.4-2.4 1.4-5.4 0-7.9zM46.3 54.5c1.1-1.1 2.3-1.6 3.8-1.6s2.8.5 3.8 1.6c1.1 1.1 1.6 2.3 1.6 3.8s-.5 2.8-1.6 3.8c-1.1 1.1-2.3 1.6-3.8 1.6s-2.8-.5-3.8-1.6c-1.1-1.1-1.6-2.3-1.6-3.8.1-1.5.6-2.8 1.6-3.8zm-.5-4.9V21.8h8.8v27.8h-8.8z"></path></svg> <!-- -->Yields</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L408"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">Destroy</code><code>(</code><code>) → </code><code>(</code><code>)</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Destroy"><code style="text-decoration:none">Destroy</code><a class="hash-link" href="#Destroy" title="Direct link to heading">​</a></h3><span class="badge_Ba2I" style="color:#f1c40f"><span class="badgeTooltip_cWXP">This is a yielding function. When called, it will pause the Lua thread that called the function until a result is ready to be returned, without interrupting other scripts.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#f1c40f" role="img" aria-label="This is a yielding function. When called, it will pause the Lua thread that called the function until a result is ready to be returned, without interrupting other scripts."><path d="M96.4 11.9c-1.4-2.5-4-4-6.9-4H10.8c-2.9 0-5.4 1.5-6.9 4-1.4 2.5-1.4 5.5 0 7.9L43.3 88c1.4 2.5 4 4 6.9 4 2.9 0 5.4-1.5 6.9-4l39.3-68.2c1.4-2.4 1.4-5.4 0-7.9zM46.3 54.5c1.1-1.1 2.3-1.6 3.8-1.6s2.8.5 3.8 1.6c1.1 1.1 1.6 2.3 1.6 3.8s-.5 2.8-1.6 3.8c-1.1 1.1-2.3 1.6-3.8 1.6s-2.8-.5-3.8-1.6c-1.1-1.1-1.6-2.3-1.6-3.8.1-1.5.6-2.8 1.6-3.8zm-.5-4.9V21.8h8.8v27.8h-8.8z"></path></svg> <!-- -->Yields</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/mvyasu/TeleportQueue/blob/main/src/init.lua#L422"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>TeleportQueue<!-- -->:</code><code class="green_DgR4">Destroy</code><code>(</code><code>) → </code><code>(</code><code>)</code></div><div>
 <p>
   Cleans up any connections that TeleportQueue and locks <code>:Add()</code>, <code>:Flush()</code>, <code>:SetOption()</code>, <code>:SetOptions()</code>.
   It will yield until <code>:Flush()</code> is done processing. If it has been yielding for over FORCE_REMOVE_ALL_AFTER, then
@@ -130,7 +130,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 152,
+                &quot;line&quot;: 166,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -146,7 +146,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 179,
+                &quot;line&quot;: 193,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -173,7 +173,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 192,
+                &quot;line&quot;: 206,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -195,7 +195,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 213,
+                &quot;line&quot;: 227,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -211,7 +211,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 221,
+                &quot;line&quot;: 235,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -238,7 +238,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 233,
+                &quot;line&quot;: 247,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -260,7 +260,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 268,
+                &quot;line&quot;: 282,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -276,7 +276,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 289,
+                &quot;line&quot;: 303,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -298,7 +298,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 311,
+                &quot;line&quot;: 325,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -314,7 +314,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 360,
+                &quot;line&quot;: 374,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -326,7 +326,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;yields&quot;: true,
             &quot;source&quot;: {
-                &quot;line&quot;: 408,
+                &quot;line&quot;: 422,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         }
@@ -341,7 +341,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
             ],
             &quot;readonly&quot;: true,
             &quot;source&quot;: {
-                &quot;line&quot;: 117,
+                &quot;line&quot;: 131,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -354,12 +354,62 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
             ],
             &quot;readonly&quot;: true,
             &quot;source&quot;: {
-                &quot;line&quot;: 125,
+                &quot;line&quot;: 139,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         }
     ],
     &quot;types&quot;: [
+        {
+            &quot;name&quot;: &quot;QueueOptions&quot;,
+            &quot;desc&quot;: &quot;&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;PlaceId&quot;,
+                    &quot;lua_type&quot;: &quot;number&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;Id&quot;,
+                    &quot;lua_type&quot;: &quot;string|number&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;MaxPlayers&quot;,
+                    &quot;lua_type&quot;: &quot;number?&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;TeleportOptions&quot;,
+                    &quot;lua_type&quot;: &quot;TeleportOptions?&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;AllowedWithinQueue&quot;,
+                    &quot;lua_type&quot;: &quot;((TeleportQueue, Player) -&gt; (boolean, string?))?&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;OnPlayerRemoved&quot;,
+                    &quot;lua_type&quot;: &quot;((TeleportQueue, Player) -&gt; nil)?&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;OnPlayerAdded&quot;,
+                    &quot;lua_type&quot;: &quot;((TeleportQueue, Player) -&gt; nil)?&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;OnOptionUpdated&quot;,
+                    &quot;lua_type&quot;: &quot;{(TeleportQueue, any) -&gt; nil}?&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 84,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
         {
             &quot;name&quot;: &quot;AddResult&quot;,
             &quot;desc&quot;: &quot;A string enum value used to describe the result of using `TeleportQueue:Add()`.&quot;,
@@ -404,7 +454,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
                 &quot;enum&quot;
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 97,
+                &quot;line&quot;: 111,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -437,7 +487,7 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
                 &quot;enum&quot;
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 109,
+                &quot;line&quot;: 123,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         }
@@ -445,11 +495,11 @@ PlaceId with specific TeleportOptions with ease."><link data-rh="true" rel="cano
     &quot;name&quot;: &quot;TeleportQueue&quot;,
     &quot;desc&quot;: &quot;A TeleportQueue is an object that handles a list of a players that can be teleported to a specified\nPlaceId with specific TeleportOptions with ease.&quot;,
     &quot;source&quot;: {
-        &quot;line&quot;: 133,
+        &quot;line&quot;: 147,
         &quot;path&quot;: &quot;src/init.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#AddResult" class="table-of-contents__link toc-highlight">AddResult</a></li><li><a href="#FlushResult" class="table-of-contents__link toc-highlight">FlushResult</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#AddResult" class="table-of-contents__link toc-highlight">AddResult</a></li><li><a href="#FlushResult" class="table-of-contents__link toc-highlight">FlushResult</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#Add" class="table-of-contents__link toc-highlight">:Add</a></li><li><a href="#Destroy" class="table-of-contents__link toc-highlight">:Destroy</a></li><li><a href="#Flush" class="table-of-contents__link toc-highlight">:Flush</a></li><li><a href="#GetOption" class="table-of-contents__link toc-highlight">:GetOption</a></li><li><a href="#GetOptions" class="table-of-contents__link toc-highlight">:GetOptions</a></li><li><a href="#GetPlayers" class="table-of-contents__link toc-highlight">:GetPlayers</a></li><li><a href="#Remove" class="table-of-contents__link toc-highlight">:Remove</a></li><li><a href="#RemoveAll" class="table-of-contents__link toc-highlight">:RemoveAll</a></li><li><a href="#SetOption" class="table-of-contents__link toc-highlight">:SetOption</a></li><li><a href="#SetOptions" class="table-of-contents__link toc-highlight">:SetOptions</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 mvyasu. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/TeleportQueue/assets/js/runtime~main.208174d3.js"></script>
-<script src="/TeleportQueue/assets/js/main.f63cba22.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#AddResult" class="table-of-contents__link toc-highlight">AddResult</a></li><li><a href="#FlushResult" class="table-of-contents__link toc-highlight">FlushResult</a></li><li><a href="#QueueOptions" class="table-of-contents__link toc-highlight">QueueOptions</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#AddResult" class="table-of-contents__link toc-highlight">AddResult</a></li><li><a href="#FlushResult" class="table-of-contents__link toc-highlight">FlushResult</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#Add" class="table-of-contents__link toc-highlight">:Add</a></li><li><a href="#Destroy" class="table-of-contents__link toc-highlight">:Destroy</a></li><li><a href="#Flush" class="table-of-contents__link toc-highlight">:Flush</a></li><li><a href="#GetOption" class="table-of-contents__link toc-highlight">:GetOption</a></li><li><a href="#GetOptions" class="table-of-contents__link toc-highlight">:GetOptions</a></li><li><a href="#GetPlayers" class="table-of-contents__link toc-highlight">:GetPlayers</a></li><li><a href="#Remove" class="table-of-contents__link toc-highlight">:Remove</a></li><li><a href="#RemoveAll" class="table-of-contents__link toc-highlight">:RemoveAll</a></li><li><a href="#SetOption" class="table-of-contents__link toc-highlight">:SetOption</a></li><li><a href="#SetOptions" class="table-of-contents__link toc-highlight">:SetOptions</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 mvyasu. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/TeleportQueue/assets/js/runtime~main.a0820170.js"></script>
+<script src="/TeleportQueue/assets/js/main.46a1d8cf.js"></script>
 </body>
 </html>
