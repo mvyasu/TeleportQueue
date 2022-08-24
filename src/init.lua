@@ -212,9 +212,8 @@ function TeleportQueue.new(startOptions: QueueOptions): TeleportQueue
 end
 
 --[=[
-	@param (updateKind: UpdateKind, ...any) -> nil
-	@return RBXScriptConnection
-	
+	@param observerFn (updateKind: UpdateKind, ...any) -> nil
+
 	Observes the TeleportQueue and calls the provided observer function when a player is removed or added and when
 	the TeleportOptions change.
 ]=]
@@ -225,25 +224,21 @@ function TeleportQueue.prototype:Observe(observerFn: observerFn): RBXScriptConne
 end
 
 --[=[
-	@return {Player}
-
 	Returns an array of players that are in the queue
 ]=]
 
-function TeleportQueue.prototype:GetPlayers()
+function TeleportQueue.prototype:GetPlayers(): {Player}
 	return table.clone(self[PLAYERS_SYMBOL])
 end
 
 --[=[
-	@param optionName string
-	@param newValue any
 	@return boolean -- whether it successfully set the option
 
 	Sets an option to a new value. If there's a function in OnOptionUpdated
 	for the option that is changing, it will run that function as well.
 ]=]
 
-function TeleportQueue.prototype:SetOption(optionName: string, newValue: any, shouldFireChange: boolean): boolean
+function TeleportQueue.prototype:SetOption(optionName: string, newValue: any, _shouldFireChange: boolean): boolean
 	if self[CLOSING_SYMBOL] then
 		return false
 	end
@@ -256,7 +251,7 @@ function TeleportQueue.prototype:SetOption(optionName: string, newValue: any, sh
 			onOptionUpdatedFn(self, newValue)
 		end
 		-- a bit icky, but using something like shouldNotFireChange is a bit weird
-		if shouldFireChange or shouldFireChange==nil then
+		if _shouldFireChange or _shouldFireChange==nil then
 			self.Changed:Fire(UpdateKind.OptionsChanged, self:GetOptions())
 		end
 	end
@@ -264,17 +259,12 @@ function TeleportQueue.prototype:SetOption(optionName: string, newValue: any, sh
 end
 
 --[=[
-	@param optionName string
 	@return any? -- The value of the option
 ]=]
 
 function TeleportQueue.prototype:GetOption(optionName: string): any?
 	return self[OPTIONS_SYMBOL][optionName]
 end
-
---[=[
-	@return QueueOptions
-]=]
 
 function TeleportQueue.prototype:GetOptions(): QueueOptions
 	return table.clone(self[OPTIONS_SYMBOL])
@@ -319,14 +309,13 @@ function TeleportQueue.prototype:SetOptions(newTeleportQueueOptions: QueueOption
 end
 
 --[=[
-	@param player Player
 	@return boolean -- true if the player was removed
 	
 	Removes the provided player from the queue if they are within the queue.
 	If they are not within the queue, it'll do nothing.
 ]=]
 
-function TeleportQueue.prototype:Remove(player: Player, shouldFireChange: boolean): boolean
+function TeleportQueue.prototype:Remove(player: Player, _shouldFireChange: boolean): boolean
 	local playerIndex = table.find(self[PLAYERS_SYMBOL] or {}, player)
 	if playerIndex then
 		table.remove(self[PLAYERS_SYMBOL], playerIndex)
@@ -336,7 +325,7 @@ function TeleportQueue.prototype:Remove(player: Player, shouldFireChange: boolea
 			onPlayerRemovedFn(self, player)
 		end
 
-		if shouldFireChange or shouldFireChange==nil then
+		if _shouldFireChange or _shouldFireChange==nil then
 			self.Changed:Fire(UpdateKind.PlayersRemoved, {player})
 		end
 
@@ -346,8 +335,6 @@ function TeleportQueue.prototype:Remove(player: Player, shouldFireChange: boolea
 end
 
 --[=[
-	@return {[Player]: boolean}
-	
 	Removes all the players from the queue in a while loop.
 ]=]
 
