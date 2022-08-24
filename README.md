@@ -10,7 +10,7 @@ You can read the [documentation](https://mvyasu.github.io/TeleportQueue/api) for
  
 ## Basic Usage
 
-To begin using this resource, you'll want to first construct a new TeleportQueue. All you need to do is:
+To begin using this resource, you'll want to first construct a new TeleportQueue:
 
 ```lua
 local TeleportQueue = require(game:GetService("ReplicatedStorage").Packages.TeleportQueue)
@@ -20,7 +20,7 @@ local newTeleportQueue = TeleportQueue.new({
 	Id = game:GetService("HttpService"):GenerateGUID(), -- How we identify the queue
 })
 ```
-There are more options that you can pass besides `PlaceId` and `Id`, but these are the most important options in my opinion besides `TeleportOptions`. Now that you created a new queue, you can add players to it like so:
+There are [more options](https://mvyasu.github.io/TeleportQueue/api/TeleportQueue#QueueOptions) that you can pass besides `PlaceId` and `Id`, but these are the most important options in my opinion besides `TeleportOptions`. Now that you have created a new queue, you can add players to it like so:
 
 ```lua
 local addResult = newTeleportQueue:Add(player)
@@ -33,7 +33,7 @@ The TeleportQueue will automatically remove the added player from the queue if t
 ```lua
 newTeleportQueue:Remove(player)
 ```
-Once you're done with adding and removing players from the queue and are ready to teleport them, all you need to do is:
+Once you're done with adding and removing players from the queue and are ready to teleport them:
 
 ```lua
 local flushResult, teleportResult = newTeleportQueue:Flush()

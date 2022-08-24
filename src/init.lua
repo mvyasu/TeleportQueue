@@ -16,7 +16,6 @@ local DEFAULT_QUEUE_OPTIONS = {
 	PlaceId = 0,
 	Id = "Default",
 
-	GetTeleportData = function() return {} end,
 	AllowedWithinQueue = function() return true end,
 	OnOptionUpdated = {
 		MaxPlayers = function(self, newMaxPlayers: number)
