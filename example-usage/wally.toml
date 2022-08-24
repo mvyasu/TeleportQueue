@@ -1,0 +1,9 @@
+[package]
+name = "mvyasu/example-queue-usage"
+description = "TeleportQueue Example"
+version = "0.0.1"
+realm = "shared"
+registry = "https://github.com/upliftgames/wally-index"
+
+[dependencies]
+Component = "sleitnick/component@2.4.6"

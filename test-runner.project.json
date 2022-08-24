@@ -8,8 +8,8 @@
 		"TeleportQueue": {
 			"$path": "src"
 		},
-		"TeleportQueueTest": {
-		  "$path": "test"
+		"TeleportQueueTests": {
+		  "$path": "test-runner/Tests"
 		},
 		"TestEZ": {
 			"$path": "test-runner/TestEZ"

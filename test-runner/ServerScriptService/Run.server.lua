@@ -7,7 +7,7 @@ local RUN_TESTS = true
 if RUN_TESTS then
 	print("Running unit tests...")
 	local data = TestEZ.TestBootstrap:run({
-		ReplicatedStorage.TeleportQueueTest
+		ReplicatedStorage.TeleportQueueTests
 	})
 
 	if data.failureCount > 0 then

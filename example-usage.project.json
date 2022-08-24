@@ -1,0 +1,26 @@
+{
+	"name": "TeleportQueue Example",
+	"tree": {
+	  	"$className": "DataModel",
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+			"Packages": {
+				"$path": "example-usage/Packages",
+				"TeleportQueue": {
+					"$path": "src"
+				}
+			}
+		},
+	
+		"ServerScriptService": {
+			"$className": "ServerScriptService",
+			"$path": "example-usage/ServerScriptService"
+		},
+
+		"StarterPlayer": {
+			"StarterPlayerScripts": {
+				"$path": "example-usage/StarterPlayerScripts"
+			}
+		}
+	}
+}
