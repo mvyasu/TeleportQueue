@@ -35,6 +35,14 @@ local DEFAULT_QUEUE_OPTIONS = {
 	},
 }
 
+export type UpdateKind = string
+local UpdateKind = {
+	PlayersAdded = "At least one player has been added to the TeleportQueue",
+	PlayersRemoved = "At least one player has been removed from the TeleportQueue",
+	OptionsChanged = "At least one option for the TeleportQueue has been changed",
+	Initializing = "The observer is running for the first time",
+}
+
 export type FlushResult = string
 local FlushResult = {
 	QueueDestroyed = "TeleportQueue has been destroyed",
@@ -56,7 +64,10 @@ local AddResult = {
 	Success = "Successfully added",
 }
 
+type observerFn = (updateKind: UpdateKind, ...any) -> nil
+
 export type TeleportQueue = {
+	Observe: (observerFn) -> RBXScriptConnection,
 	GetPlayers: () -> {Player},
 	SetOptions: (teleportQueueOptions: QueueOptions, shouldReconcile: boolean) -> nil,
 	SetOption: (optionName: string, newValue: any) -> boolean,
@@ -93,6 +104,18 @@ export type QueueOptions = {
 	MaxPlayers: number?,
 	TeleportOptions: TeleportOptions?,
 }
+
+--[=[
+	@interface UpdateKind
+	@tag enum
+	@within TeleportQueue
+	.PlayersAdded string -- Players were added
+	.PlayersRemoved string -- Players were removed
+	.OptionsChanged string -- Options were changed
+	.Initializing string -- Observer is being ran for the first time
+
+	A string enum value used to describe the result of using `TeleportQueue:Add()`.
+]=]
 
 --[=[
 	@interface AddResult
@@ -148,6 +171,7 @@ export type QueueOptions = {
 local TeleportQueue = {
 	FlushResult = table.freeze(FlushResult),
 	AddResult = table.freeze(AddResult),
+	UpdateKind = table.freeze(UpdateKind),
 }
 
 TeleportQueue.prototype = {}
@@ -171,6 +195,8 @@ function TeleportQueue.new(startOptions: QueueOptions): TeleportQueue
 	self[PLAYERS_SYMBOL] = {}
 	self[OPTIONS_SYMBOL] = {}
 
+	self.Changed = Instance.new("BindableEvent")
+
 	self:SetOptions(startOptions, true)
 
 	self[CLEANUP_SYMBOL] = {
@@ -179,10 +205,24 @@ function TeleportQueue.new(startOptions: QueueOptions): TeleportQueue
 		end),
 		game:GetService("Players").ChildRemoved:Connect(function(player)
 			self:Remove(player)
-		end)
+		end),
+		self.Changed,
 	}
 
 	return self
+end
+
+--[=[
+	@param (updateKind: UpdateKind, ...any) -> nil
+	@return RBXScriptConnection
+	
+	Observes the TeleportQueue and calls the provided observer function when a player is removed or added and when
+	the TeleportOptions change.
+]=]
+
+function TeleportQueue.prototype:Observe(observerFn: observerFn): RBXScriptConnection
+	task.spawn(observerFn, UpdateKind.Initializing)
+	return self.Changed.Event:Connect(observerFn)
 end
 
 --[=[
@@ -204,7 +244,7 @@ end
 	for the option that is changing, it will run that function as well.
 ]=]
 
-function TeleportQueue.prototype:SetOption(optionName: string, newValue: any): boolean
+function TeleportQueue.prototype:SetOption(optionName: string, newValue: any, shouldFireChange: boolean): boolean
 	if self[CLOSING_SYMBOL] then
 		return false
 	end
@@ -215,6 +255,10 @@ function TeleportQueue.prototype:SetOption(optionName: string, newValue: any): b
 		local onOptionUpdatedFn = if OnOptionUpdated then OnOptionUpdated[optionName] else nil
 		if onOptionUpdatedFn then
 			onOptionUpdatedFn(self, newValue)
+		end
+		-- a bit icky, but using something like shouldNotFireChange is a bit weird
+		if shouldFireChange or shouldFireChange==nil then
+			self.Changed:Fire(UpdateKind.OptionsChanged, self:GetOptions())
 		end
 	end
 	return true
@@ -267,8 +311,11 @@ function TeleportQueue.prototype:SetOptions(newTeleportQueueOptions: QueueOption
 	end
 	local newOptions = newTeleportQueueOptions or {}
 	for k,v in pairs(if shouldReconcile then reconcileDeep(newOptions, DEFAULT_QUEUE_OPTIONS) else newOptions) do
-		self:SetOption(k, v)
+		self:SetOption(k, v, false)
 	end
+
+	self.Changed:Fire(UpdateKind.OptionsChanged, self:GetOptions())
+	
 	return nil
 end
 
@@ -280,7 +327,7 @@ end
 	If they are not within the queue, it'll do nothing.
 ]=]
 
-function TeleportQueue.prototype:Remove(player: Player): boolean
+function TeleportQueue.prototype:Remove(player: Player, shouldFireChange: boolean): boolean
 	local playerIndex = table.find(self[PLAYERS_SYMBOL] or {}, player)
 	if playerIndex then
 		table.remove(self[PLAYERS_SYMBOL], playerIndex)
@@ -288,6 +335,10 @@ function TeleportQueue.prototype:Remove(player: Player): boolean
 		local onPlayerRemovedFn = self:GetOption("OnPlayerRemoved")
 		if onPlayerRemovedFn then
 			onPlayerRemovedFn(self, player)
+		end
+
+		if shouldFireChange or shouldFireChange==nil then
+			self.Changed:Fire(UpdateKind.PlayersRemoved, {player})
 		end
 
 		return true
@@ -305,13 +356,24 @@ function TeleportQueue.prototype:RemoveAll(): {[Player]: boolean}
 	local removalResults = {}
 	while #self[PLAYERS_SYMBOL]>0 do
 		local index, player = next(self[PLAYERS_SYMBOL])
-		local success, result = pcall(self.Remove, self, player)
+		local success, result = pcall(self.Remove, self, player, false)
 
 		if not success then
 			warn(("[TeleportQueue]: Failed to remove player from teleport queue! %s"):format(result))
 		end
 
 		removalResults[player] = success and result
+	end
+	do
+		local playersActuallyRemoved = {}
+		for player,wasSuccessful in removalResults do
+			if wasSuccessful then
+				table.insert(playersActuallyRemoved, player)
+			end
+		end
+		if #playersActuallyRemoved>0 then
+			self.Changed:Fire(UpdateKind.PlayersRemoved, playersActuallyRemoved)
+		end
 	end
 	return removalResults
 end
@@ -355,12 +417,14 @@ function TeleportQueue.prototype:Add(player: Player): (AddResult, string?)
 		end
 	end
 
+	table.insert(self[PLAYERS_SYMBOL], player)
+
 	local onPlayerAddedFn = self:GetOption("OnPlayerAdded")
 	if onPlayerAddedFn then
 		onPlayerAddedFn(self, player)
 	end
 
-	table.insert(self[PLAYERS_SYMBOL], player)
+	self.Changed:Fire(UpdateKind.PlayersAdded, {player})
 
 	return AddResult.Success
 end
@@ -428,6 +492,8 @@ function TeleportQueue.prototype:Destroy()
 			local t = typeof(object)
 			if t == "RBXScriptConnection" then
 				object:Disconnect()
+			elseif t == "Instance" then
+				object:Destroy()
 			end
 		end)
 		if not success then

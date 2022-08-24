@@ -31,6 +31,91 @@ return function()
 				table.clear(players)
 			end
 		end)
+
+		describe("Listeners", function()
+			describe(".Changed", function()
+				local timesFired = 0
+				beforeEach(function()
+					timesFired = 0
+					teleportQueue.Changed.Event:Connect(function(kind)
+						timesFired += 1
+					end)
+				end)
+
+				it("should only fire once after :Add()", function()
+					teleportQueue:Add(createPlayer())
+					task.wait()
+					expect(timesFired).to.equal(1)
+				end)
+				it("should only fire once after :SetOption(), :SetOptions(), :Add(), or :Remove()", function()
+					local examplePlayer = createPlayer()
+					teleportQueue:Add(examplePlayer)
+					teleportQueue:Remove(examplePlayer)
+					teleportQueue:SetOption("MaxPlayers", 5)
+					teleportQueue:SetOptions({
+						TeleportOptions = Instance.new("TeleportOptions"),
+						MaxPlayers = 8,
+					})
+					task.wait()
+					expect(timesFired).to.equal(4)
+				end)
+				it("should only fire once when using :RemoveAll()", function()
+					teleportQueue:Add(createPlayer())
+					teleportQueue:Add(createPlayer())
+					teleportQueue:Add(createPlayer())
+					teleportQueue:RemoveAll()
+					task.wait()
+					expect(timesFired).to.equal(4)
+				end)
+				it("should not fire when using :RemoveAll() if the queue is empty", function()
+					teleportQueue:RemoveAll()
+					task.wait()
+					expect(timesFired).to.equal(0)
+				end)
+				it("should pass along the kind 'PlayersAdded' and an array of players added when using :Add()", function()
+					local args = {}
+					teleportQueue.Changed.Event:Once(function(...)
+						args = {...}
+					end)
+					teleportQueue:Add(createPlayer())
+					task.wait()
+					expect(args[1]).to.equal(TeleportQueue.UpdateKind.PlayersAdded)
+					expect(typeof(args[2])).to.equal("table")
+					expect(args[2][1]:IsA("Folder")).to.equal(true)
+				end)
+				it("should pass along the kind 'PlayersRemoved' and an array of players removed when using :Remove() and :RemoveAll()", function()
+					for _,removeMethod in {"Remove", "RemoveAll"} do
+						local player = createPlayer()
+						teleportQueue:Add(player)
+
+						local args = {}
+						teleportQueue.Changed.Event:Once(function(...)
+							args = {...}
+						end)
+						teleportQueue[removeMethod](teleportQueue, player)
+						task.wait()
+						expect(args[1]).to.equal(TeleportQueue.UpdateKind.PlayersRemoved)
+						expect(typeof(args[2])).to.equal("table")
+						expect(args[2][1]:IsA("Folder")).to.equal(true)
+					end
+				end)
+			end)
+			
+			describe(":Observe()", function()
+				it("should return an RBXScriptConnection", function()
+					local observeType = typeof(teleportQueue:Observe(function() end))
+					expect(observeType).to.equal("RBXScriptConnection")
+				end)
+				it("should expect the update kind to be 'Initializing' as the first kind of update", function()
+					local lastUpdateKind
+					teleportQueue:Observe(function(updateKind: TeleportQueue.UpdateKind)
+						lastUpdateKind = updateKind
+					end)
+					task.wait()
+					expect(lastUpdateKind).to.equal(TeleportQueue.UpdateKind.Initializing)
+				end)
+			end)
+		end)
 		
 		describe("Options", function()
 			describe(":GetOptions()", function()
