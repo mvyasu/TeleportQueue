@@ -8,8 +8,6 @@ local CLOSING_SYMBOL = newproxy()
 local PROCESS_SYMBOL = newproxy()
 local CLEANUP_SYMBOL = newproxy()
 
-local FORCE_REMOVE_ALL_AFTER = 60
-
 local DEFAULT_QUEUE_OPTIONS = {
 	TeleportOptions = Instance.new("TeleportOptions"),
 	MaxPlayers = 50,
@@ -461,13 +459,7 @@ function TeleportQueue.prototype:Flush(): (FlushResult, (TeleportAsyncResult | s
 end
 
 --[=[
-	@yields
-	
-	Cleans up any connections that TeleportQueue and locks `:Add()`, `:Flush()`, `:SetOption()`, `:SetOptions()`.
-	It will yield until `:Flush()` is done processing. If it has been yielding for over FORCE_REMOVE_ALL_AFTER, then
-	it will automatically stop yielding. 
-	
-	Once it is done yielding, it runs `:RemoveAll()`. It doesn't not yield at all if `:Flush()` is not being processed.
+	Cleans up any connections that TeleportQueue uses and locks `:Add()`, `:Flush()`, `:SetOption()`, `:SetOptions()`. Afterwards, it runs `:RemoveAll()`.
 ]=]
 
 function TeleportQueue.prototype:Destroy()
@@ -488,13 +480,7 @@ function TeleportQueue.prototype:Destroy()
 	end
 	table.clear(self[CLEANUP_SYMBOL])
 
-	do --waits until the processing is complete and removes everyone from queue
-		local waitStartTimestamp = tick() 
-		if self[PROCESS_SYMBOL] then
-			repeat task.wait() until not self[PROCESS_SYMBOL] or tick()-waitStartTimestamp>FORCE_REMOVE_ALL_AFTER
-		end
-		self:RemoveAll()
-	end
+	self:RemoveAll()
 end
 
 return TeleportQueue
