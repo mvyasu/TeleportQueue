@@ -200,9 +200,6 @@ function TeleportQueue.new(startOptions: QueueOptions): TeleportQueue
 		game:GetService("Players").PlayerRemoving:Connect(function(player)
 			self:Remove(player)
 		end),
-		game:GetService("Players").ChildRemoved:Connect(function(player)
-			self:Remove(player)
-		end),
 		self.Changed,
 	}
 
