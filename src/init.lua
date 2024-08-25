@@ -75,7 +75,7 @@ export type TeleportQueue = {
 	Add: (Player) -> (boolean, string?),
 	Remove: (Player) -> boolean,
 	RemoveAll: () -> {[Player]: boolean},
-	Flush: () -> (boolean, string?),
+	Flush: () -> (boolean, (TeleportAsyncResult | string)?),
 }
 
 --[=[
